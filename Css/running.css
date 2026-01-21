@@ -1,0 +1,506 @@
+:root {
+    --bg-dark: #0a0a0a;
+    --card-bg: #141414;
+    --accent: #ffffff;
+    --text-main: #e0e0e0;
+    --text-dim: #a0a0a0;
+    --accent-glow: rgba(255, 255, 255, 0.1);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header Mejorado */
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-container { 
+    padding: 1.5rem; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.logo-centered { 
+    font-weight: 900; 
+    letter-spacing: 14px; 
+    font-size: 1.5rem; 
+    color: var(--accent);
+    position: relative;
+    animation: fadeInDown 0.8s ease;
+}
+
+.logo-centered::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.logo-centered:hover::after {
+    width: 100%;
+}
+
+/* Hero Mejorado */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(10,10,10,0.8));
+    z-index: 1;
+}
+
+.hero-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(35%) contrast(1.1);
+    z-index: 0;
+    animation: slowZoom 20s ease infinite alternate;
+}
+
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-content h1 { 
+    font-size: clamp(3rem, 10vw, 6.5rem); 
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.hero-content h1 span { 
+    display: block; 
+    -webkit-text-stroke: 2px var(--accent); 
+    color: transparent;
+    text-shadow: 0 0 30px rgba(255,255,255,0.3);
+    animation: pulse 2s ease infinite;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    font-weight: 300;
+    margin-top: 1rem;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: -80px auto 0;
+    padding: 0 2rem 5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.content-section { 
+    margin-bottom: 6rem;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Feature Card Horizontal Mejorada */
+.feature-card.horizontal {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.feature-card.horizontal:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* Galería de Rendimiento Mejorada */
+.performance-gallery {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 6rem;
+    height: 520px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+}
+
+.gallery-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(0.8);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img { 
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.08);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    background: var(--accent);
+    color: #000;
+    padding: 8px 20px;
+    font-weight: 900;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+/* Cards Inferiores Mejorados */
+.grid-2 { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 2rem; 
+}
+
+.pro-card { 
+    background: var(--card-bg); 
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.pro-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.card-img-wrapper { 
+    height: 350px; 
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
+    transition: opacity 0.3s ease;
+}
+
+.pro-card:hover .card-img-wrapper::after {
+    opacity: 0;
+}
+
+.card-img-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: grayscale(100%) brightness(0.7);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pro-card:hover img { 
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.1);
+}
+
+.card-body { 
+    padding: 3rem 2.5rem;
+    position: relative;
+}
+
+.card-body h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.card-body p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+}
+
+.tag { 
+    font-size: 0.65rem; 
+    letter-spacing: 4px; 
+    color: var(--accent);
+    display: block; 
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.highlight-dark {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+    transition: left 0.6s ease;
+}
+
+.highlight-dark:hover::before {
+    left: 100%;
+}
+
+/* Banner Final Mejorado */
+.info-banner {
+    background: linear-gradient(135deg, #151515 0%, #0a0a0a 100%);
+    padding: 5rem 3rem;
+    border-left: 5px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+}
+
+.info-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.banner-content h2 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 4px;
+    font-weight: 900;
+}
+
+.details-list {
+    position: relative;
+    z-index: 1;
+}
+
+.detail-item { 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 1.5rem; 
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+    background: rgba(255,255,255,0.05);
+    transform: translateX(10px);
+}
+
+.icon { 
+    color: var(--accent);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.detail-item p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Final Motto Mejorado */
+.final-motto {
+    text-align: center;
+    padding: 10rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.outline-text {
+    font-size: clamp(5rem, 15vw, 13rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent);
+    letter-spacing: 20px;
+    text-transform: uppercase;
+    opacity: 0.15;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+}
+
+.final-motto:hover .outline-text {
+    opacity: 1;
+    -webkit-text-fill-color: var(--accent);
+    letter-spacing: 25px;
+    text-shadow: 0 0 50px rgba(255,255,255,0.5);
+}
+
+/* Footer Mejorado */
+.pro-footer {
+    text-align: center;
+    padding: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    background: linear-gradient(to top, #000, var(--bg-dark));
+}
+
+/* Mejoras de Tipografía */
+.pro-card strong, .feature-card strong {
+    color: var(--accent);
+    font-weight: 700;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+}
+
+/* Responsive Mejorado */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem 3rem;
+    }
+
+    .feature-card.horizontal, 
+    .performance-gallery { 
+        grid-template-columns: 1fr; 
+        height: auto; 
+    }
+
+    .performance-gallery {
+        height: auto;
+    }
+
+    .gallery-item {
+        height: 300px;
+    }
+
+    .outline-text {
+        letter-spacing: 8px;
+        -webkit-text-stroke: 1.5px var(--accent);
+    }
+
+    .final-motto {
+        padding: 5rem 0;
+    }
+
+    .card-body {
+        padding: 2rem 1.5rem;
+    }
+
+    .info-banner {
+        padding: 3rem 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 4rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-centered {
+        letter-spacing: 8px;
+        font-size: 1.2rem;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
