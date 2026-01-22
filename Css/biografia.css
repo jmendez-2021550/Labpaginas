@@ -1,0 +1,193 @@
+:root {
+    --bg-dark: #070707;
+    --card-bg: #111111;
+    --accent: #ffffff;
+    --text-main: #e0e0e0;
+    --text-dim: #a0a0a0;
+    --border-color: rgba(255, 255, 255, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* Header */
+.main-header {
+    background: rgba(7, 7, 7, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-centered { font-weight: 900; letter-spacing: 10px; font-size: 1rem; text-align: center; }
+
+/* Layout */
+.container {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+/* Bio Hero con JereAnimado */
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.bio-image-wrapper {
+    position: relative;
+}
+
+.profile-img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.floating-icon {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.bio-text h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #fff; }
+.bio-text p { margin-bottom: 1.2rem; color: var(--text-dim); font-size: 1.1rem; }
+.tag { color: var(--accent); font-size: 0.75rem; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 0.5rem; }
+
+/* Cards Académicos */
+.academic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.info-card:hover {
+    border-color: rgba(255,255,255,0.3);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.card-visual {
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 2rem;
+}
+
+.card-img {
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.card-content { padding: 2rem; }
+.card-content h2 { font-size: 1.3rem; margin-bottom: 1rem; color: #fff; }
+.card-content p { font-size: 0.95rem; color: var(--text-dim); }
+
+.skills-list { list-style: none; }
+.skills-list li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: var(--text-dim);
+}
+
+.skills-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.separator { border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 6rem 0; }
+
+.pro-footer {
+    text-align: center; padding: 6rem 2rem;
+    color: var(--text-dim); font-size: 0.8rem; letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .bio-grid { grid-template-columns: 1fr; text-align: center; }
+    .bio-text h1 { font-size: 2.5rem; }
+    .floating-icon { width: 80px; right: 10px; }
+}
+.personal-info-banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 4rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.info-box {
+    background: linear-gradient(145deg, #1a1a1a, #111111);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(145deg, #222, #111);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.info-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.info-box h3 {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.info-box p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+    .personal-info-banner {
+        padding: 1rem;
+    }
+}
