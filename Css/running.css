@@ -444,6 +444,40 @@ body {
     background: linear-gradient(to top, #000, var(--bg-dark));
 }
 
+/* Navigation Buttons */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.nav-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    background: linear-gradient(135deg, var(--accent), rgba(255,255,255,0.8));
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+    border: 2px solid transparent;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(255,255,255,0.4);
+    background: linear-gradient(135deg, #ffffff, var(--accent));
+}
+
+.nav-btn:active {
+    transform: translateY(-1px);
+}
+
 /* Mejoras de Tipografía */
 .pro-card strong, .feature-card strong {
     color: var(--accent);
